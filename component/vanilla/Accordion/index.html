@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <title>Accordion Example</title>
+</head>
+<body>
+    <script>
+        // !! use window to init JS script, otherwise put <script> tag to end of body. 
+        window.addEventListener("load", function(){
+            var x = document.getElementsByClassName("acc--title");
+            x[0].addEventListener("click", function() {
+                this.classList.toggle("active");
+
+                /* nextElementSibling to get next element under same element (acc-content) */
+                let accordionContent = this.nextElementSibling;
+
+                /* display content */
+                if(accordionContent.style.display == "block" ) {
+                    accordionContent.style.display = "none"; 
+                }else{
+                    accordionContent.style.display = "block"; 
+                }
+
+                /* smooth animation */
+                if(accordionContent.style.maxHeight) {
+                    accordionContent.style.maxHeight = null;
+                }else{
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                }
+            });
+        })
+    </script>
+    
+    <div class="wrapper">
+        <div class="accordion">
+            <div class="acc--title"> <h4>ACCORDION TITLE</h4></div>
+            <div class="acc--content">
+                <ul> list accordion  1</ul>
+                <ul> list accrodion  2</ul>
+                <ul> list accoridon  3</ul>
+                <ul> list accordion  4</ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
